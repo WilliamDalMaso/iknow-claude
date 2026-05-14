@@ -1,0 +1,10 @@
+venv/
+.env
+__pycache__/
+*.pyc
+.DS_Store
+data/books/*/raw/*.pdf
+data/books/*/retrieval/*.sqlite
+data/books/*/retrieval/*.sqlite-*
+.pytest_cache/
+*.egg-info/

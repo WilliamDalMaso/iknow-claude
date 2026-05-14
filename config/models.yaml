@@ -1,0 +1,50 @@
+models:
+  cheap:
+    name: gpt-4o-mini
+    temperature: 0.0
+    max_retries: 3
+  smart:
+    name: gpt-4o
+    temperature: 0.0
+    max_retries: 3
+  judge:
+    name: gpt-4o
+    temperature: 0.0
+    max_retries: 3
+  vision:
+    name: gpt-4o
+    temperature: 0.0
+  embed:
+    name: text-embedding-3-small
+    dim: 1536
+    batch_size: 100
+
+# Approximate USD per 1M tokens (input, output). Used for cost estimates only.
+pricing:
+  gpt-4o-mini:
+    input_per_1m: 0.15
+    output_per_1m: 0.60
+  gpt-4o:
+    input_per_1m: 2.50
+    output_per_1m: 10.00
+  text-embedding-3-small:
+    input_per_1m: 0.02
+    output_per_1m: 0.0
+
+routing:
+  p2_diagnose: cheap
+  p5_benchmark_generate: smart
+  p5_benchmark_verify: judge
+  p6_answer: cheap
+  p6_judge: judge
+  p6_query_rewrite: cheap
+  p7_propose: smart
+  p7_critique: judge
+  p8_extract: cheap
+  p9_critique: judge
+  p10_cards: cheap
+  lesson_distill: judge
+
+cost_caps:
+  per_run_warn_usd: 2.00
+  per_run_block_usd: 10.00

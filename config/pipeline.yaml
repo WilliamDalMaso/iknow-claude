@@ -1,0 +1,43 @@
+# Default pipeline knobs. Per-book overrides may live in
+# data/books/<book_id>/config.yaml (loaded if present).
+
+chunking:
+  target_tokens: 500
+  min_tokens: 200
+  max_tokens: 800
+  respect_pages: true
+  respect_paragraphs: true
+
+retrieval:
+  top_k: 8
+  vector_k: 4
+  fts_k: 4
+  hybrid: true
+
+benchmark:
+  min_total: 20
+  min_per_category: 3
+  categories: [factual, conceptual, applied, cross_ref]
+  auto_generate_if_missing: true
+
+p6_gate:
+  pass_threshold: 0.80
+  variants_to_try:
+    chunk_sizes: [300, 600, 800]
+    top_ks: [5, 8, 12]
+    retrieval_modes: [hybrid, vector_only, fts_only]
+    query_rewrite: [false, true]
+
+p7_gate:
+  taxonomy_min_types: 5
+  taxonomy_max_types: 15
+  ontology_min_types: 5
+  ontology_max_types: 12
+
+p8_gate:
+  min_akus_per_chunk: 0.5
+  max_rejection_rate: 0.30
+
+p9_gate:
+  min_evidence_coverage: 0.95
+  max_unsupported_edge_rate: 0.10
